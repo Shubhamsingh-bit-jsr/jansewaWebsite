@@ -1,0 +1,166 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}   
+   
+ body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  /* 👈 Prevent horizontal scroll */
+}
+
+    .hero {
+      background: url('OIP.webp') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-donate {
+      background-color: #f47c1f;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-weight: 600;
+    }
+
+    .btn-report {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      text-decoration: none;
+      color: white;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+
+    /* Responsive Styles */
+   @media (max-width: 992px) {
+  .hero {
+    height: auto;
+    padding: 80px 20px 40px;
+    flex-direction: column;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+    word-break: break-word;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    word-break: break-word;
+  }
+
+  .hero-content .btn {
+    width: 90%;
+    margin: 5px auto;
+  }
+
+  .navbar-brand span {
+    font-size: 18px;
+  }
+
+  .gallery-img {
+    height: 180px !important;
+  }
+
+  footer .d-md-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+     .impact-section {
+      background: url('hero.jpg') no-repeat center center/cover;
+      padding: 80px 20px 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .impact-card {
+      border: 1px solid #dce7e9;
+      border-left: 5px solid #265c3a;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #fff;
+      text-align: center;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+
+    .impact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .impact-icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #265c3a;
+    }
+
+    .impact-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #265c3a;
+    }
+
+    .impact-label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .growth-section {
+      background-color: #f9fafb;
+      padding: 60px 0;
+    }
+    

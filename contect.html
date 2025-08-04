@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - The Stray Army</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      text-decoration: none;
+      color: white;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 32px;
+      }
+      .whatsapp-float {
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1b5e20; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center text-white" href="#">
+      <img src="Ngo-logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+      <span style="font-weight: bold; font-size: 20px;">JanSeva Sangh Trust</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav gap-2 text-center">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="what_we_do.html">What We Do</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="impact.html">Impact</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="saport.html">Support Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contect.html">Contact</a></li>
+      </ul>
+    </div>
+    <a href="saport.html" class="btn btn-warning btn-sm ms-3">Donate Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section style="background-image: url('image/optus_contactus.avif'); background-size: cover; background-position: center; padding: 100px 0; position: relative; text-align: center; color: white;">
+  <div style="background: rgba(0,0,0,0.5); position: absolute; inset: 0;"></div>
+  <div style="position: relative; z-index: 2;" data-aos="fade-up">
+    <h1 class="fw-bold">Contact Us</h1>
+    <p class="fs-5">Get in touch with us for rescues, donations, volunteering, or general inquiries</p>
+  </div>
+</section>
+
+<!-- WhatsApp Rescue Banner -->
+<div class="text-center py-3 px-2 bg-danger-subtle text-danger" data-aos="fade-up">
+  <div class="fw-bold">WhatsApp Rescue Helpline</div>
+  <p class="mb-1">⚠️ Found an injured animal? Please WhatsApp us with its condition and a short video.</p>
+  <div class="fs-5 fw-bold text-danger-emphasis">+91 7707007005</div>
+</div>
+
+<!-- Contact Cards -->
+<div class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="fade-up">
+      <div class="border rounded shadow-sm p-4 text-center bg-white">
+        <div class="fs-2 text-danger">📞</div>
+        <h5>WhatsApp Rescue Helpline</h5>
+        <p class="fw-bold text-success">+91 7707007005</p>
+        <p class="text-muted">Emergency response for injured animals</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="border rounded shadow-sm p-4 text-center bg-white">
+        <div class="fs-2 text-primary">📧</div>
+        <h5>Email Us</h5>
+        <p class="fw-bold text-success">info@jansevasanghtrust.com</p>
+        <p class="text-muted">General inquiries and info</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="border rounded shadow-sm p-4 text-center bg-white">
+        <div class="fs-2 text-success">📍</div>
+        <h5>Our Location</h5>
+        <p class="fw-bold text-success">Sighgora Market Near SBI ATM</p>
+        <p class="text-muted">Jamshedpur, Jharkhand, India</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Message Form & Map -->
+<div class="container pb-5">
+  <div class="row g-4">
+    <div class="col-md-6" data-aos="fade-right">
+      <div class="border rounded p-4 bg-white">
+        <h5 class="text-success mb-3">Send Us a Message</h5>
+        <form>
+          <div class="mb-2 d-flex gap-2 flex-column flex-sm-row">
+            <input type="text" placeholder="Full Name *" class="form-control" required>
+            <input type="text" placeholder="Phone Number *" class="form-control" required>
+          </div>
+          <input type="email" placeholder="Email Address *" class="form-control mb-2" required>
+          <input type="text" placeholder="Subject *" class="form-control mb-2">
+          <textarea placeholder="Message *" rows="4" class="form-control mb-2"></textarea>
+          <button class="btn btn-success w-100">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <div class="border rounded p-4 bg-white mb-4">
+        <h5 class="mb-3">🕒 Operating Hours</h5>
+        <p><b>Emergency Rescues:</b> When Possible</p>
+        <p><b>Office Hours:</b> 9:00 AM - 1:00 PM & 3:00 PM - 4:00 PM</p>
+        <p><b>Visitor Hours:</b> 10:00 AM - 1:00 PM & 3:00 PM - 4:00 PM</p>
+        <p><b>Volunteer Shifts:</b> Flexible Timing</p>
+      </div>
+      <div class="border rounded p-3 bg-white">
+        <h5 class="mb-2">📍 Find Us</h5>
+        <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+        <p class="mt-2 mb-0"><b>Address:</b> Sighgora Market Near SBI ATM.</p>
+        <p><b>Jamshedpur, Jharkhand - 831009</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Floating Icon -->
+<a href="https://wa.me/917707007005" target="_blank" class="whatsapp-float">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Footer -->
+<footer class="bg-success text-white pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="d-flex align-items-center mb-2">
+          <img src="Ngo-logo.png" class="me-2" style="height: 40px; width: 40px; border-radius: 50%;">
+          <div>
+            <h5 class="fw-bold mb-0">Jan Seva Sangh Trust</h5>
+            <small>Charitable Trust</small>
+          </div>
+        </div>
+        <p class="small mt-3">Jan Seva Sangh Trust is a non-governmental organization (NGO) based in Jamshedpur, Jharkhand working towards human-wildlife conflict mitigation and promoting urban wildlife conservation.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+          <li><a href="#" class="text-white text-decoration-none">What We Do</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Impact</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Support Us</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h6 class="fw-bold mb-3">Connect</h6>
+        <p>WhatsApp Rescue Helpline:<br><strong>+91 7707007005, +91 8877610000</strong></p>
+        <p>Email: info@jansevasanghtrust.com</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr class="border-top border-white mt-4">
+    <div class="d-md-flex justify-content-between align-items-center text-center text-md-start">
+      <p class="mb-0 small">© 2016–2025 Jan Seva Sangh Trust. All rights reserved.</p>
+      <p class="mb-0 small">
+        Designed by <a href="https://techcoderservice.in/" target="_blank" class="text-white text-decoration-underline fw-semibold">Techcoder Software Pvt. Ltd.</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+</body>
+</html>
