@@ -1,0 +1,205 @@
+<?php
+// Database connection
+$conn = new mysqli("localhost", "root", "", "jansevasangh");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Jan Seva Sangh Trust</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gallery-hero {
+      background: url('image/gallery-banner.jpeg') center center/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    .gallery-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 139, 172, 0.6);
+    }
+    .gallery-hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+    }
+    .gallery-box {
+      aspect-ratio: 1 / 1;
+      background: #f9f9f9;
+    }
+    .gallery-img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark"
+    style="background-color: #1b5e20; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center text-white" href="#">
+            <img src="Ngo-logo.png" alt="Logo"
+                style="height: 50px; width: auto; margin-right: 10px; object-fit: contain;">
+            <span style="font-weight: bold; font-size: 20px;">JanSeva Sangh Trust</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="what_we_do.html">What We Do</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="impact.html">Impact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="saport.html">Support Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="contect.php">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="saport.html" class="btn btn-warning btn-sm ms-3">Donate Now</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="gallery-hero">
+  <h1 class="fw-bold">Gallery</h1>
+</section>
+
+<!-- Gallery Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <h2 class="fw-bold">Captured Moments</h2>
+      <p class="text-muted">Some glimpses from our journey of compassion and care.</p>
+    </div>
+
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" data-aos="zoom-in-up">
+      <?php
+      $result = $conn->query("SELECT * FROM gallery ORDER BY id DESC");
+      while ($row = $result->fetch_assoc()) {
+          echo '
+          <div class="col">
+              <div class="gallery-box rounded overflow-hidden">
+                  <img src="admin/uploads/' . htmlspecialchars($row['photo']) . '" alt="Gallery" class="img-fluid gallery-img">
+              </div>
+          </div>';
+      }
+      ?>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-success text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <!-- Logo and Description -->
+            <div class="col-md-4 mb-4">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="Ngo-logo.png" class="me-2" style="height: 40px; width: 40px; border-radius: 50%;">
+                    <div>
+                        <h5 class="fw-bold mb-0">Jan Seva Sangh Trust</h5>
+                        <small>Charitable Trust</small>
+                    </div>
+                </div>
+                <p class="small mt-3">
+                    Jan Seva Sangh Trust is a non-governmental organization (NGO) based in Jamshedpur, Jharkhand
+                    working towards human-wildlife conflict mitigation and promoting urban wildlife conservation.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">What We Do</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Impact</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Support Us</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div class="col-md-4 mb-4">
+                <h6 class="fw-bold mb-3">Connect</h6>
+                <p>Whatsapp Rescue Helpline:<br><strong>+91 7707007005, +91 8877610000</strong></p>
+                <p>Email: info@jansevasanghtrust.com</p>
+                <div class="d-flex gap-3 mt-3">
+                    <a href="https://www.instagram.com/jan_seva_sangh_trust/profilecard/?igsh=MTg0cXUyOGNjemhyNA=="
+                        class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16yqudBVDM/" class="text-white fs-5"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://youtube.com/@jansevasanghtrust2016?si=Y6lRnUQ8mUqjUhbT"
+                        class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-top border-white mt-4">
+
+        <!-- Bottom Footer -->
+        <div class="d-md-flex justify-content-between align-items-center text-center text-md-start">
+            <p class="mb-0 small">© 2016–2025 Jan Seva Sangh Trust. All rights reserved.</p>
+            <p class="mb-0 small">
+                Designed by
+                <a href="https://techcoderservice.in/" target="_blank"
+                    class="text-white text-decoration-underline fw-semibold">
+                    Techcoder Software Pvt. Ltd.
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
