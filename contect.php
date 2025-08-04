@@ -1,3 +1,34 @@
+<?php
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $conn = new mysqli("localhost", "root", "", "jansevasangh");
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Sanitize inputs
+    $name = $conn->real_escape_string($_POST['name']);
+    $phone = $conn->real_escape_string($_POST['phone']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $subject = $conn->real_escape_string($_POST['subject']);
+    $message = $conn->real_escape_string($_POST['message']);
+
+    // Insert data
+    $sql = "INSERT INTO contact (name, phone, email, subject, message) 
+            VALUES ('$name', '$phone', '$email', '$subject', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        $success = "Your message has been sent successfully!";
+    } else {
+        $error = "Something went wrong. Please try again.";
+    }
+
+    $conn->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,12 +91,12 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav gap-2 text-center">
-        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="what_we_do.html">What We Do</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="impact.html">Impact</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="saport.html">Support Us</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="contect.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contect.php">Contact</a></li>
       </ul>
     </div>
     <a href="saport.html" class="btn btn-warning btn-sm ms-3">Donate Now</a>
@@ -119,19 +150,25 @@
 </div>
 
 <!-- Message Form & Map -->
-<div class="container pb-5">
+<div class="container pb-5 mt-4">
+  <?php if (!empty($success)): ?>
+    <div class="alert alert-success"><?php echo $success; ?></div>
+  <?php elseif (!empty($error)): ?>
+    <div class="alert alert-danger"><?php echo $error; ?></div>
+  <?php endif; ?>
+
   <div class="row g-4">
     <div class="col-md-6" data-aos="fade-right">
       <div class="border rounded p-4 bg-white">
         <h5 class="text-success mb-3">Send Us a Message</h5>
-        <form>
+        <form method="POST">
           <div class="mb-2 d-flex gap-2 flex-column flex-sm-row">
-            <input type="text" placeholder="Full Name *" class="form-control" required>
-            <input type="text" placeholder="Phone Number *" class="form-control" required>
+            <input type="text" name="name" placeholder="Full Name *" class="form-control" required>
+            <input type="text" name="phone" placeholder="Phone Number *" class="form-control" required>
           </div>
-          <input type="email" placeholder="Email Address *" class="form-control mb-2" required>
-          <input type="text" placeholder="Subject *" class="form-control mb-2">
-          <textarea placeholder="Message *" rows="4" class="form-control mb-2"></textarea>
+          <input type="email" name="email" placeholder="Email Address *" class="form-control mb-2" required>
+          <input type="text" name="subject" placeholder="Subject *" class="form-control mb-2">
+          <textarea name="message" placeholder="Message *" rows="4" class="form-control mb-2" required></textarea>
           <button class="btn btn-success w-100">Send Message</button>
         </form>
       </div>
@@ -146,14 +183,13 @@
       </div>
       <div class="border rounded p-3 bg-white">
         <h5 class="mb-2">📍 Find Us</h5>
-        <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?..." width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         <p class="mt-2 mb-0"><b>Address:</b> Sighgora Market Near SBI ATM.</p>
         <p><b>Jamshedpur, Jharkhand - 831009</b></p>
       </div>
     </div>
   </div>
 </div>
-
 <!-- WhatsApp Floating Icon -->
 <a href="https://wa.me/917707007005" target="_blank" class="whatsapp-float">
   <i class="bi bi-whatsapp"></i>
