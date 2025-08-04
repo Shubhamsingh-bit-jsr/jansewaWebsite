@@ -1,3 +1,11 @@
+<?php
+$conn = new mysqli("localhost", "root", "", "jansevasangh");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,16 +45,13 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav gap-3">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="index.html">Home</a>
+                        <a class="nav-link text-white" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="about.html">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="what_we_do.html">What We Do</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link text-white" href="awards.html">Awards</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="impact.html">Impact</a>
@@ -55,7 +60,7 @@
                         <a class="nav-link text-white" href="saport.html">Support Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="contect.html">Contact</a>
+                        <a class="nav-link text-white" href="contect.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -250,58 +255,35 @@
     </section>
 
 
-    <!-- Gallery Section -->
-    <section class="py-5 bg-light" id="gallery">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h4 style="color: #e91e63; font-family: 'Pacifico', cursive;">Gallery</h4>
-                <h2 style="font-family: 'Poppins', sans-serif;">Moments from Our Journey</h2>
-                <div style="font-size: 2rem; color: #247a33;">📸🐾</div>
-            </div>
-
-            <!-- Gallery Grid -->
-            <div class="row g-3">
-                <!-- Repeatable Image Block -->
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image35.jpeg" alt="Gallery Image 1"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image39.jpeg" alt="Gallery Image 2"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image40.jpeg" alt="Gallery Image 3"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image41.jpeg" alt="Gallery Image 4"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image43.jpeg" alt="Gallery Image 5"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image45.jpeg" alt="Gallery Image 6"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image48.jpeg" alt="Gallery Image 7"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="image/image51.jpeg" alt="Gallery Image 8"
-                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                </div>
-            </div>
-
-            <!-- More Photos Button -->
-            <div class="text-center mt-4">
-                <a href="galary.html" class="btn btn-success px-4">More Photos</a>
-            </div>
+<!-- Gallery Section -->
+<section class="py-5 bg-light" id="gallery">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h4 style="color: #e91e63; font-family: 'Pacifico', cursive;">Gallery</h4>
+            <h2 style="font-family: 'Poppins', sans-serif;">Moments from Our Journey</h2>
+            <div style="font-size: 2rem; color: #247a33;">📸🐾</div>
         </div>
-    </section>
+
+        <!-- Gallery Grid -->
+        <div class="row g-3">
+            <?php
+            $result = $conn->query("SELECT * FROM gallery ORDER BY id DESC LIMIT 8");
+            while ($row = $result->fetch_assoc()) {
+                echo '
+                <div class="col-sm-6 col-md-3">
+                    <img src="admin/uploads/' . htmlspecialchars($row['photo']) . '" alt="Gallery Image"
+                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                </div>';
+            }
+            ?>
+        </div>
+
+        <!-- More Photos Button -->
+        <div class="text-center mt-4">
+            <a href="galary.php" class="btn btn-success px-4">More Photos</a>
+        </div>
+    </div>
+</section>
 
 
     <!-- Lightbox Modal -->
